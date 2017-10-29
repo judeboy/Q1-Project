@@ -2,15 +2,21 @@ body {
   background-image: url("https://crystalseye.files.wordpress.com/2011/08/dsc_0724.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  justify-content: center;
 }
 
+.container{
+  display: flex
+}
 .jumbotron {
   background: #222;
   width: 20%;
   margin: auto;
   margin-top: 30px;
   padding-top: 10px;
-  float
+  display: inline-block;
+  text-align: center;
+  margin: 2px;
 }
 
 .jumbotron .title {
@@ -34,20 +40,21 @@ h2 {
   font-size: 30px;
 }
 
-@media screen and (max-width: 700px) {
-  h2 {
-    font-size: 20px;
-  }
-}
-
 h3 {
   color: #FFFFFF;
   margin: 6px;
   font-size: 20px
 }
 
-@media screen and (max-width:700px) {
+
+
+/*@media screen and (max-width: 700px) {
+h2 {
+font-size: 20px;
+}
+}*/
+/*@media screen and (max-width:700px) {
   h3 {
     font-size: 15px;
   }
-}
+}*/

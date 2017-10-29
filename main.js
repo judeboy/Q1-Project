@@ -13,24 +13,24 @@ $(document).ready(function() {
     })
   }
 
-  $.when(weather(vailApi), weather(keystoneApi), weather(steamboatApi), weather(crestedButteApi), weather(winterParkApi)).done(function(a1, a2, a3, a4, a5){
+  $.when(weather(vailApi), weather(keystoneApi), weather(steamboatApi), weather(crestedButteApi), weather(winterParkApi)).done(function(w1, w2, w3, w4, w5){
 
-  let vailTemp = a1[0].main.temp
-  let keystoneTemp = a2[0].main.temp
-  let winterParkTemp = a5[0].main.temp
-  let steamboatTemp = a3[0].main.temp
-  let crestedButteTemp = a4[0].main.temp
+  let vailTemp = w1[0].main.temp
+  let keystoneTemp = w2[0].main.temp
+  let winterParkTemp = w5[0].main.temp
+  let steamboatTemp = w3[0].main.temp
+  let crestedButteTemp = w4[0].main.temp
 
-  let vailDescribe = a1[0].weather[0].description
-  let keystoneDescribe = a2[0].weather[0].description
-  let winterParkDescribe = a5[0].weather[0].description
-  let steamboatDescribe = a3[0].weather[0].description
-  let crestedButteDescribe = a4[0].weather[0].description
+  let vailDescribe = w1[0].weather[0].description
+  let keystoneDescribe = w2[0].weather[0].description
+  let winterParkDescribe = w5[0].weather[0].description
+  let steamboatDescribe = w3[0].weather[0].description
+  let crestedButteDescribe = w4[0].weather[0].description
 
   $('#weather-current-vail').append(toFahrenheit(vailTemp) + '&#8457;')
   $("#weather-current-keystone").append(toFahrenheit(keystoneTemp) + '&#8457;')
   $("#weather-current-winterPark").append(toFahrenheit(winterParkTemp) + '&#8457;')
-  $("#weather-current-steamboat").append(toFahrenheit(steamboatTemp)   + '&#8457;')
+  $("#weather-current-steamboat").append(toFahrenheit(steamboatTemp) +  '&#8457;')
   $("#weather-current-crestedButte").append(toFahrenheit(crestedButteTemp) + '&#8457;')
 
   $('#weather-description-vail').append(vailDescribe)
@@ -43,7 +43,7 @@ $(document).ready(function() {
       var fahr = (parseInt(place) * 9 / 5) - 459.67
       return Math.round(fahr)
     }
-console.log(a2[0].weather[0].description)
+console.log(w2[0].weather[0].description)
   })
 
 

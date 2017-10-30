@@ -27,6 +27,12 @@ $(document).ready(function() {
   let steamboatCondition = w3[0].weather[0].description
   let crestedButteCondition = w4[0].weather[0].description
 
+  let vailWind = w1[0].wind.speed
+  let keystoneWind = w2[0].wind.speed
+  let winterParkWind = w5[0].wind.speed
+  let steamboatWind = w3[0].wind.speed
+  let crestedButteWind = w4[0].wind.speed
+
   $('#weather-current-vail').append(toFahrenheit(vailTemp) + '&#8457;')
   $("#weather-current-keystone").append(toFahrenheit(keystoneTemp) + '&#8457;')
   $("#weather-current-winterPark").append(toFahrenheit(winterParkTemp) + '&#8457;')
@@ -39,11 +45,23 @@ $(document).ready(function() {
   $('#weather-description-steamboat').append(steamboatCondition)
   $('#weather-description-crestedButte').append(crestedButteCondition)
 
+  $('#weather-wind-vail').append(toMPH(vailWind) + ' mph')
+  $('#weather-wind-keystone').append(toMPH(keystoneWind) + ' mph')
+  $('#weather-wind-winterPark').append(toMPH(winterParkWind) + ' mph')
+  $('#weather-wind-steamboat').append(toMPH(steamboatWind) + ' mph')
+  $('#weather-wind-crestedButte').append(toMPH(crestedButteWind) + ' mph')
+
     function toFahrenheit(place) {
-      var fahr = (parseInt(place) * 9 / 5) - 459.67
+      let fahr = (parseInt(place) * 9 / 5) - 459.67
       return Math.round(fahr)
     }
-console.log(w5[0])
+
+    function toMPH(windSpeed){
+      let mph = (parseInt(windSpeed) * 2.2369)
+      return Math.round(mph)
+    }
+
+console.log(w5[0].wind.speed)
   })
 
 

@@ -9,47 +9,66 @@ body {
   display: flex;
   height: 100px;
 }
+
 .container{
   display: flex;
+  flex-flow: nowrap;
 }
 
 .jumbotron {
   background: #222;
   width: 20%;
+  opacity: .7;
   /*margin: auto;*/
   /*margin-top: 30px;*/
   /*padding-top: 10px;*/
   text-align: center;
   margin: 2px;
 }
-#steamboat{
-  align-self: center ;
-}
-
 
 
 .jumbotron .title {
   font-family: 'Raleway', sans-serif;
   color: #FFFFFF;
+  font-size: 40px;
   padding-top: 40px;
   padding-bottom: 20px;
 }
 
 .jumbotron .weather {
   color: #FFFFFF;
+  font-family: 'Abel', sans-serif;
 
 }
 
 
 p.temp-type {
-  padding-top: 10px;
+  font-family: 'Abel', sans-serif;
+  padding-top: 5px;
   cursor: cell;
   color: #FFFFFF;
+  font-size: 30px;
 }
 
 h2 {
   font-size: 25px;
 
+}
+
+a:visited {
+    color: 	#FFEBCD;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: orange;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+ footer {
+  display: block;
 }
 
 /*h3 {

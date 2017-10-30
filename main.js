@@ -21,11 +21,11 @@ $(document).ready(function() {
   let steamboatTemp = w3[0].main.temp
   let crestedButteTemp = w4[0].main.temp
 
-  let vailDescribe = w1[0].weather[0].description
-  let keystoneDescribe = w2[0].weather[0].description
-  let winterParkDescribe = w5[0].weather[0].description
-  let steamboatDescribe = w3[0].weather[0].description
-  let crestedButteDescribe = w4[0].weather[0].description
+  let vailCondition = w1[0].weather[0].description
+  let keystoneCondition = w2[0].weather[0].description
+  let winterParkCondition = w5[0].weather[0].description
+  let steamboatCondition = w3[0].weather[0].description
+  let crestedButteCondition = w4[0].weather[0].description
 
   $('#weather-current-vail').append(toFahrenheit(vailTemp) + '&#8457;')
   $("#weather-current-keystone").append(toFahrenheit(keystoneTemp) + '&#8457;')
@@ -33,17 +33,17 @@ $(document).ready(function() {
   $("#weather-current-steamboat").append(toFahrenheit(steamboatTemp) +  '&#8457;')
   $("#weather-current-crestedButte").append(toFahrenheit(crestedButteTemp) + '&#8457;')
 
-  $('#weather-description-vail').append(vailDescribe)
-  $('#weather-description-keystone').append(keystoneDescribe)
-  $('#weather-description-winterPark').append(winterParkDescribe)
-  $('#weather-description-steamboat').append(steamboatDescribe)
-  $('#weather-description-crestedButte').append(crestedButteDescribe)
+  $('#weather-description-vail').append(vailCondition)
+  $('#weather-description-keystone').append(keystoneCondition)
+  $('#weather-description-winterPark').append(winterParkCondition)
+  $('#weather-description-steamboat').append(steamboatCondition)
+  $('#weather-description-crestedButte').append(crestedButteCondition)
 
     function toFahrenheit(place) {
       var fahr = (parseInt(place) * 9 / 5) - 459.67
       return Math.round(fahr)
     }
-console.log(w2[0].weather[0].description)
+console.log(w5[0])
   })
 
 

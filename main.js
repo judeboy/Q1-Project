@@ -6,6 +6,26 @@ $(document).ready(function() {
   var crestedButteApi = 'http://api.openweathermap.org/data/2.5/weather?lat=38.8697&lon=-106.9879&APPID=9fa4cc6724a4bb5d6dac1c4c25068d46'
   var winterParkApi = 'http://api.openweathermap.org/data/2.5/weather?lat=39.945&lon=-105.8173&APPID=9fa4cc6724a4bb5d6dac1c4c25068d46'
 
+  let allCheckBoxes = $('input')
+  allCheckBoxes.each(function(index, element){
+    let wrapped = $(element)
+    let favorite = localStorage.getItem(wrapped.attr('id')) || false
+    if (favorite){
+      $('#' + wrapped.attr('id')).prop('checked', true)
+    }
+  })
+
+
+  $("input[name='favorites']").click(function () {
+      let id = $(this).attr('id')
+      let isFav = localStorage.getItem(id) || false
+      if (isFav) {
+        localStorage.removeItem(id)
+      } else {
+        localStorage.setItem(id, true)
+      }
+  })
+
   function weather(location){
     return $.getJSON(location).done(function(data) {
       if (data.status !== 200) {
@@ -61,7 +81,12 @@ $(document).ready(function() {
       return Math.round(mph)
     }
 
-console.log(w5[0].wind.speed)
+    function addFav(){
+
+    }
+
+
+// console.log(w5[0].wind.speed)
   })
 
 

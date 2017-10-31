@@ -1,5 +1,5 @@
 body {
-  background-image: url("images/sunrise.jpg");
+  background-image: url("images/trees.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   justify-content: center;
@@ -12,7 +12,7 @@ body {
 
 .container{
   display: flex;
-  flex-flow: nowrap;
+  flex-flow: ;
 }
 
 .jumbotron {
@@ -68,9 +68,24 @@ a:hover {
 }
 
  footer {
-   padding-top: 40px;
-   font-size: 40px;
-   font-family: 'Raleway', sans-serif;
-   text-align: center;
-
+  display: block;
 }
+
+/*h3 {
+  color: #FFFFFF;
+  margin: 6px;
+  font-size: 20px
+}*/
+
+
+
+/*@media screen and (max-width: 700px) {
+h2 {
+font-size: 20px;
+}
+}*/
+/*@media screen and (max-width:700px) {
+  h3 {
+    font-size: 15px;
+  }
+}*/

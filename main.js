@@ -6,6 +6,13 @@ $(document).ready(function() {
   var crestedButteApi = 'http://api.openweathermap.org/data/2.5/weather?lat=38.8697&lon=-106.9879&APPID=9fa4cc6724a4bb5d6dac1c4c25068d46'
   var winterParkApi = 'http://api.openweathermap.org/data/2.5/weather?lat=39.945&lon=-105.8173&APPID=9fa4cc6724a4bb5d6dac1c4c25068d46'
 
+  function weather(location){
+    return $.getJSON(location).done(function(data) {
+      if (data.status !== 200) {
+      }
+    })
+  }
+
   // adding a check to checkboxes if in local storage
   let allCheckBoxes = $('input')
   allCheckBoxes.each(function(index, element){
@@ -27,51 +34,54 @@ $(document).ready(function() {
     }
   })
 
-  function weather(location){
-    return $.getJSON(location).done(function(data) {
-      if (data.status !== 200) {
-      }
-    })
-  }
-
   // one function for each API call
-  $.when(weather(vailApi), weather(keystoneApi), weather(steamboatApi), weather(crestedButteApi), weather(winterParkApi)).done(function(w1, w2, w3, w4, w5){
+$.when(weather(vailApi), weather(keystoneApi), weather(steamboatApi), weather(crestedButteApi), weather(winterParkApi)).done(function(w1, w2, w3, w4, w5){
+  let resorts = ['vail', 'keystone', 'winterPark', 'steamboat', 'crestedButte']
+  let dubs = [w1, w2, w3, w4, w5]
 
-    let resorts = ['vail', 'keystone', 'winterPark', 'steamboat', 'crestedButte']
-    let dubs = [w1, w2, w3, w4, w5]
-
-    temps(resorts, dubs)
-    conditions(resorts, dubs)
-    windy(resorts, dubs)
-
+  temps(resorts, dubs)
+  condition(resorts, dubs)
+  windy(resorts, dubs)
   })
 }) // notouchy
 
-function temps(resorts, dubs){
+function buildtempsArray(resorts, dubs){
   let tempArray = []
   for (let i = 0; i < resorts.length; i++) {
     tempArray.push(toFahrenheit(dubs[i][0].main.temp) + '&#8457;')
   }
+  return tempArray
+}
+function temps(resorts, dubs){
+  let tempArray = buildtempsArray(resorts, dubs)
   for (let x = 0; x < tempArray.length; x++){
     $('#weather-current-' + resorts[x]).append(tempArray[x])
   }
 }
 
-function windy(resorts, dubs){
+function buildWindArray(resorts, dubs){
   let windArray = []
   for (let i = 0; i < resorts.length; i++) {
     windArray.push(toMPH(dubs[i][0].wind.speed) + ' mph')
   }
+  return windArray
+}
+function windy(resorts, dubs){
+  let windArray = buildWindArray(resorts, dubs)
   for (let x = 0; x < windArray.length; x++){
     $('#weather-wind-' + resorts[x]).append(windArray[x])
   }
 }
 
-function conditions(resorts, dubs){
+function buildConditionsArray(resorts, dubs){
   let conditionArray = []
   for (let i = 0; i < resorts.length; i++) {
     conditionArray.push(dubs[i][0].weather[0].description)
   }
+  return conditionArray
+}
+function condition(resorts, dubs){
+  let conditionArray = buildConditionsArray(resorts, dubs)
   for (let x = 0; x < conditionArray.length; x++){
     $('#weather-description-' + resorts[x]).append(conditionArray[x])
   }

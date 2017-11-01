@@ -5,11 +5,14 @@ body {
 }
 
 header {
- display: flex;
- justify-content: center;
- font-size: 40px;
- padding-top: 20px;
- padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 50px;
+  color: #181004;
 }
 
 .container{
@@ -23,6 +26,8 @@ header {
   opacity: .7;
   text-align: center;
   margin: 2px;
+  border-style: solid;
+  border-color: #0E3442;
 }
 
 
@@ -52,15 +57,16 @@ h2 {
   font-size: 25px;
 }
 
+a:link {
+  color: #C0C8CB;
+}
+
 a:visited {
     color: 	#FFEBCD;
-    background-color: transparent;
-    text-decoration: none;
 }
 
 a:hover {
     color: orange;
-    background-color: transparent;
     text-decoration: underline;
 }
 

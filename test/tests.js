@@ -4,7 +4,7 @@ const expect = chai.expect;
 
 describe('toMPH', function(){
   it('returns a number', function(){
-    expect(toMPH()).to.be.a('number')
+    expect(toMPH(10)).to.equal(22)
   })
 })
 
@@ -14,8 +14,8 @@ describe('toFahrenheit', function(){
   })
 })
 
-describe('weather', function(){
-  it('returns a JSON object', function(){
-    expect(weather()).to.be.a('object')
-  })
-})
+// describe('weather', function(){
+//   it('returns a JSON object', function(){
+//     expect(weather()).to.be.a('object')
+//   })
+// })

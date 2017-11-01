@@ -18,62 +18,65 @@ $(document).ready(function() {
 
   // click event that toggles in/out of local storage
   $('input').click(function () {
-      let id = $(this).attr('id')
-      let isFav = localStorage.getItem(id) || false
-      if (isFav) {
-        localStorage.removeItem(id)
-      } else {
-        localStorage.setItem(id, true)
-      }
+    let id = $(this).attr('id')
+    let isFav = localStorage.getItem(id) || false
+    if (isFav) {
+      localStorage.removeItem(id)
+    } else {
+      localStorage.setItem(id, true)
+    }
   })
+
+  function weather(location){
+    return $.getJSON(location).done(function(data) {
+      if (data.status !== 200) {
+      }
+    })
+  }
 
   // one function for each API call
   $.when(weather(vailApi), weather(keystoneApi), weather(steamboatApi), weather(crestedButteApi), weather(winterParkApi)).done(function(w1, w2, w3, w4, w5){
 
-  let vailTemp = w1[0].main.temp
-  let keystoneTemp = w2[0].main.temp
-  let winterParkTemp = w5[0].main.temp
-  let steamboatTemp = w3[0].main.temp
-  let crestedButteTemp = w4[0].main.temp
+    let resorts = ['vail', 'keystone', 'winterPark', 'steamboat', 'crestedButte']
+    let dubs = [w1, w2, w3, w4, w5]
 
-  $('#weather-current-vail').append(toFahrenheit(vailTemp) + '&#8457;')
-  $("#weather-current-keystone").append(toFahrenheit(keystoneTemp) + '&#8457;')
-  $("#weather-current-winterPark").append(toFahrenheit(winterParkTemp) + '&#8457;')
-  $("#weather-current-steamboat").append(toFahrenheit(steamboatTemp) +  '&#8457;')
-  $("#weather-current-crestedButte").append(toFahrenheit(crestedButteTemp) + '&#8457;')
+    temps(resorts, dubs)
+    conditions(resorts, dubs)
+    windy(resorts, dubs)
 
-  let vailCondition = w1[0].weather[0].description
-  let keystoneCondition = w2[0].weather[0].description
-  let winterParkCondition = w5[0].weather[0].description
-  let steamboatCondition = w3[0].weather[0].description
-  let crestedButteCondition = w4[0].weather[0].description
-
-  $('#weather-description-vail').append(vailCondition)
-  $('#weather-description-keystone').append(keystoneCondition)
-  $('#weather-description-winterPark').append(winterParkCondition)
-  $('#weather-description-steamboat').append(steamboatCondition)
-  $('#weather-description-crestedButte').append(crestedButteCondition)
-
-  let vailWind = w1[0].wind.speed
-  let keystoneWind = w2[0].wind.speed
-  let winterParkWind = w5[0].wind.speed
-  let steamboatWind = w3[0].wind.speed
-  let crestedButteWind = w4[0].wind.speed
-
-  $('#weather-wind-vail').append(toMPH(vailWind) + ' mph')
-  $('#weather-wind-keystone').append(toMPH(keystoneWind) + ' mph')
-  $('#weather-wind-winterPark').append(toMPH(winterParkWind) + ' mph')
-  $('#weather-wind-steamboat').append(toMPH(steamboatWind) + ' mph')
-  $('#weather-wind-crestedButte').append(toMPH(crestedButteWind) + ' mph')
   })
 }) // notouchy
 
-function weather(location){
-  return $.getJSON(location).done(function(data) {
-    if (data.status !== 200) {
-    }
-  })
+function temps(resorts, dubs){
+  let tempArray = []
+  for (let i = 0; i < resorts.length; i++) {
+    tempArray.push(toFahrenheit(dubs[i][0].main.temp) + '&#8457;')
+  }
+  for (let x = 0; x < tempArray.length; x++){
+    $('#weather-current-' + resorts[x]).append(tempArray[x])
+  }
 }
+
+function windy(resorts, dubs){
+  let windArray = []
+  for (let i = 0; i < resorts.length; i++) {
+    windArray.push(toMPH(dubs[i][0].wind.speed) + ' mph')
+  }
+  for (let x = 0; x < windArray.length; x++){
+    $('#weather-wind-' + resorts[x]).append(windArray[x])
+  }
+}
+
+function conditions(resorts, dubs){
+  let conditionArray = []
+  for (let i = 0; i < resorts.length; i++) {
+    conditionArray.push(dubs[i][0].weather[0].description)
+  }
+  for (let x = 0; x < conditionArray.length; x++){
+    $('#weather-description-' + resorts[x]).append(conditionArray[x])
+  }
+}
+
 function toFahrenheit(place) {
   let fahr = (parseInt(place) * 9 / 5) - 459.67
   return Math.round(fahr)

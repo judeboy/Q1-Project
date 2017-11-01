@@ -82,15 +82,14 @@ $(document).ready(function() {
       return Math.round(mph)
     }
 
-    function addFav(){
 
-    }
-
-
-// console.log(w5[0].wind.speed)
   })
 
 
 
-
 })//notouchy
+
+module.exports = {
+toFahrenheit
+toMPH
+};

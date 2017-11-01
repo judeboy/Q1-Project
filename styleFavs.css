@@ -2,11 +2,10 @@ body {
   background-image: url("images/trees.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  justify-content: center;
 }
 
  header {
-  display: flex;
+  display: block;
   height: 100px;
 }
 
@@ -19,9 +18,6 @@ body {
   background: #222;
   width: 20%;
   opacity: .7;
-  /*margin: auto;*/
-  /*margin-top: 30px;*/
-  /*padding-top: 10px;*/
   text-align: center;
   margin: 2px;
 }
@@ -38,7 +34,6 @@ body {
 .jumbotron .weather {
   color: #FFFFFF;
   font-family: 'Abel', sans-serif;
-
 }
 
 
@@ -52,7 +47,6 @@ p.temp-type {
 
 h2 {
   font-size: 25px;
-
 }
 
 a:visited {
@@ -70,12 +64,6 @@ a:hover {
  footer {
   display: block;
 }
-
-/*h3 {
-  color: #FFFFFF;
-  margin: 6px;
-  font-size: 20px
-}*/
 
 
 

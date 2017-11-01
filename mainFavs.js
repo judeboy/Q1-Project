@@ -19,20 +19,6 @@ $(document).ready(function() {
   })
 
 
-  //toggles in/out of local storage for any check box click event
-  $("input[name='favorites']").click(function () {
-      let id = $(this).attr('id')
-      let isFav = localStorage.getItem(id) || false
-      if (isFav) {
-        localStorage.removeItem(id)
-      } else {
-        localStorage.setItem(id, true)
-      }
-  })
-
-  // if ($( "input" ).prop( "checked" ) != true) {
-  // $('input').closest.('.jumbotron').hide()
-  // }
 
   function weather(location){
     return $.getJSON(location).done(function(data) {

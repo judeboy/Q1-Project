@@ -7,10 +7,13 @@ body {
 
  header {
   display: flex;
-  height: 100px;
+  justify-content: center;
+  font-size: 40px;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
 
-.container{
+.container {
   display: flex;
   flex-flow: nowrap;
 }
@@ -71,5 +74,4 @@ a:hover {
    font-size: 40px;
    font-family: 'Raleway', sans-serif;
    text-align: center;
-
 }

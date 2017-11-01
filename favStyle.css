@@ -4,18 +4,21 @@ body {
   background-repeat: no-repeat;
 }
 
- header {
-  display: block;
-  height: 100px;
+header {
+ display: flex;
+ justify-content: center;
+ font-size: 40px;
+ padding-top: 20px;
+ padding-bottom: 40px;
 }
 
 .container{
   display: flex;
-  flex-flow: ;
+  justify-content: center;
 }
 
 .jumbotron {
-  background: #222;
+  background: #014056;
   width: 20%;
   opacity: .7;
   text-align: center;
@@ -37,7 +40,7 @@ body {
 }
 
 
-p.temp-type {
+p.cam {
   font-family: 'Abel', sans-serif;
   padding-top: 5px;
   cursor: cell;
@@ -62,18 +65,8 @@ a:hover {
 }
 
  footer {
-  display: block;
-}
-
-
-
-/*@media screen and (max-width: 700px) {
-h2 {
-font-size: 20px;
-}
-}*/
-/*@media screen and (max-width:700px) {
-  h3 {
-    font-size: 15px;
-  }
-}*/
+     padding-top: 40px;
+     font-size: 40px;
+     font-family: 'Raleway', sans-serif;
+     text-align: center;
+   }

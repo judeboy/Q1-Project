@@ -18,17 +18,6 @@ $(document).ready(function() {
     }
   })
 
-
-
-  function weather(location){
-    return $.getJSON(location).done(function(data) {
-      if (data.status !== 200) {
-      }
-    })
-  }
-
-
-
   $.when(weather(vailApi), weather(keystoneApi), weather(steamboatApi), weather(crestedButteApi), weather(winterParkApi)).done(function(w1, w2, w3, w4, w5){
 
   let vailTemp = w1[0].main.temp
@@ -67,18 +56,20 @@ $(document).ready(function() {
   $('#weather-wind-winterPark').append(toMPH(winterParkWind) + ' mph')
   $('#weather-wind-steamboat').append(toMPH(steamboatWind) + ' mph')
   $('#weather-wind-crestedButte').append(toMPH(crestedButteWind) + ' mph')
+  })
+}) // notouchy
 
-    function toFahrenheit(place) {
-      let fahr = (parseInt(place) * 9 / 5) - 459.67
-      return Math.round(fahr)
-    }
-    function toMPH(windSpeed){
-      let mph = (parseInt(windSpeed) * 2.2369)
-      return Math.round(mph)
+function weather(location){
+  return $.getJSON(location).done(function(data) {
+    if (data.status !== 200) {
     }
   })
-
-
-
-
-})//notouchy
+}
+function toFahrenheit(place) {
+  let fahr = (parseInt(place) * 9 / 5) - 459.67
+  return Math.round(fahr)
+}
+function toMPH(windSpeed){
+  let mph = (parseInt(windSpeed) * 2.2369)
+  return Math.round(mph)
+}

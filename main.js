@@ -16,8 +16,8 @@ $(document).ready(function() {
     }
   })
 
-  //toggles in/out of local storage for any check box click event
-  $("input[name='favorites']").click(function () {
+  // click event that toggles in/out of local storage
+  $('input').click(function () {
       let id = $(this).attr('id')
       let isFav = localStorage.getItem(id) || false
       if (isFav) {
@@ -27,13 +27,7 @@ $(document).ready(function() {
       }
   })
 
-  function weather(location){
-    return $.getJSON(location).done(function(data) {
-      if (data.status !== 200) {
-      }
-    })
-  }
-
+  // one function for each API call
   $.when(weather(vailApi), weather(keystoneApi), weather(steamboatApi), weather(crestedButteApi), weather(winterParkApi)).done(function(w1, w2, w3, w4, w5){
 
   let vailTemp = w1[0].main.temp
@@ -42,23 +36,17 @@ $(document).ready(function() {
   let steamboatTemp = w3[0].main.temp
   let crestedButteTemp = w4[0].main.temp
 
-  let vailCondition = w1[0].weather[0].description
-  let keystoneCondition = w2[0].weather[0].description
-  let winterParkCondition = w5[0].weather[0].description
-  let steamboatCondition = w3[0].weather[0].description
-  let crestedButteCondition = w4[0].weather[0].description
-
-  let vailWind = w1[0].wind.speed
-  let keystoneWind = w2[0].wind.speed
-  let winterParkWind = w5[0].wind.speed
-  let steamboatWind = w3[0].wind.speed
-  let crestedButteWind = w4[0].wind.speed
-
   $('#weather-current-vail').append(toFahrenheit(vailTemp) + '&#8457;')
   $("#weather-current-keystone").append(toFahrenheit(keystoneTemp) + '&#8457;')
   $("#weather-current-winterPark").append(toFahrenheit(winterParkTemp) + '&#8457;')
   $("#weather-current-steamboat").append(toFahrenheit(steamboatTemp) +  '&#8457;')
   $("#weather-current-crestedButte").append(toFahrenheit(crestedButteTemp) + '&#8457;')
+
+  let vailCondition = w1[0].weather[0].description
+  let keystoneCondition = w2[0].weather[0].description
+  let winterParkCondition = w5[0].weather[0].description
+  let steamboatCondition = w3[0].weather[0].description
+  let crestedButteCondition = w4[0].weather[0].description
 
   $('#weather-description-vail').append(vailCondition)
   $('#weather-description-keystone').append(keystoneCondition)
@@ -66,30 +54,31 @@ $(document).ready(function() {
   $('#weather-description-steamboat').append(steamboatCondition)
   $('#weather-description-crestedButte').append(crestedButteCondition)
 
+  let vailWind = w1[0].wind.speed
+  let keystoneWind = w2[0].wind.speed
+  let winterParkWind = w5[0].wind.speed
+  let steamboatWind = w3[0].wind.speed
+  let crestedButteWind = w4[0].wind.speed
+
   $('#weather-wind-vail').append(toMPH(vailWind) + ' mph')
   $('#weather-wind-keystone').append(toMPH(keystoneWind) + ' mph')
   $('#weather-wind-winterPark').append(toMPH(winterParkWind) + ' mph')
   $('#weather-wind-steamboat').append(toMPH(steamboatWind) + ' mph')
   $('#weather-wind-crestedButte').append(toMPH(crestedButteWind) + ' mph')
-
-    function toFahrenheit(place) {
-      let fahr = (parseInt(place) * 9 / 5) - 459.67
-      return Math.round(fahr)
-    }
-
-    function toMPH(windSpeed){
-      let mph = (parseInt(windSpeed) * 2.2369)
-      return Math.round(mph)
-    }
-
-
   })
+}) // notouchy
 
-
-
-})//notouchy
-
-module.exports = {
-toFahrenheit
-toMPH
-};
+function weather(location){
+  return $.getJSON(location).done(function(data) {
+    if (data.status !== 200) {
+    }
+  })
+}
+function toFahrenheit(place) {
+  let fahr = (parseInt(place) * 9 / 5) - 459.67
+  return Math.round(fahr)
+}
+function toMPH(windSpeed){
+  let mph = (parseInt(windSpeed) * 2.2369)
+  return Math.round(mph)
+}

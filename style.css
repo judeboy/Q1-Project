@@ -41,7 +41,7 @@ body {
 }
 
 
-p.temp-type {
+p.cam {
   font-family: 'Abel', sans-serif;
   padding-top: 5px;
   cursor: cell;
@@ -56,8 +56,8 @@ h2 {
 
 a:visited {
     color: 	#FFEBCD;
-    background-color: transparent;
-    text-decoration: none;
+    /*background-color: transparent;
+    text-decoration: none;*/
 }
 
 a:hover {

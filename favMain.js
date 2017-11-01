@@ -6,6 +6,13 @@ $(document).ready(function() {
   var crestedButteApi = 'http://api.openweathermap.org/data/2.5/weather?lat=38.8697&lon=-106.9879&APPID=9fa4cc6724a4bb5d6dac1c4c25068d46'
   var winterParkApi = 'http://api.openweathermap.org/data/2.5/weather?lat=39.945&lon=-105.8173&APPID=9fa4cc6724a4bb5d6dac1c4c25068d46'
 
+  function weather(location){
+    return $.getJSON(location).done(function(data) {
+      if (data.status !== 200) {
+      }
+    })
+  }
+
   // adding a check to checkboxes if in local storage
   let allCheckBoxes = $('input')
   allCheckBoxes.each(function(index, element){
@@ -59,12 +66,6 @@ $(document).ready(function() {
   })
 }) // notouchy
 
-function weather(location){
-  return $.getJSON(location).done(function(data) {
-    if (data.status !== 200) {
-    }
-  })
-}
 function toFahrenheit(place) {
   let fahr = (parseInt(place) * 9 / 5) - 459.67
   return Math.round(fahr)

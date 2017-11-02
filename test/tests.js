@@ -9,13 +9,16 @@ describe('toMPH', function(){
 })
 
 describe('toFahrenheit', function(){
-  it('returns a number', function(){
-    expect(toFahrenheit()).to.be.a('number')
+  it('returns degrees in Fahrenheit', function(){
+    expect(toFahrenheit(280)).to.equal(44)
   })
 })
 
-// describe('weather', function(){
-//   it('returns a JSON object', function(){
-//     expect(weather()).to.be.a('object')
-//   })
-// })
+
+var testArr = [[{wind:{speed:10}}],[{}]]
+
+describe('buildWindArray', function(){
+  it('fills an empty array with wind speeds of resorts', function(){
+    expect(Array.isArray(buildWindArray(['vail'],testArr))).to.equal(true)
+})
+})

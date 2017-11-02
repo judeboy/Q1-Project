@@ -36,6 +36,7 @@ $(document).ready(function() {
 
   // one function for each API call
   $.when(weather(vailApi), weather(keystoneApi), weather(steamboatApi), weather(crestedButteApi), weather(winterParkApi)).done(function(w1, w2, w3, w4, w5){
+
     let resorts = ['vail', 'keystone', 'winterPark', 'steamboat', 'crestedButte']
     let dubs = [w1, w2, w3, w4, w5]
 
